@@ -1,0 +1,35 @@
+# Name guessing game
+import random
+
+guesses = 5
+play = 'yes'
+
+print('Hello, what is your name?')
+x = input()
+
+while play == 'yes':
+    for i in range(guesses):
+        randNum = random.randint(1, 10)
+        randNum = str(randNum)
+        print(x + ', guess a number between one and ten.')
+        guessNum = input()
+        guesses = guesses - 1
+        if guessNum == randNum:
+            print('Correct! The answer was ' + guessNum + " Would you like to play again? (Y/N)")
+            playAgain = input()
+            if playAgain == 'yes'.lower or 'y'.lower():
+                guesses = 1
+                play == 'yes'
+
+        elif guesses > 0:
+            if guessNum > randNum:
+                print('Your number is too high.')
+            else:
+                print('Your number is too low.')
+            print("Try again! You have: " + str(guesses) + " guesses remaining. ")
+        elif guesses == 0:
+            print('That was incorrect, the correct answer was ' + randNum + ". Would you like to play again? (Y/N)")
+            playAgain = input()
+            if playAgain == 'yes'.lower or 'y'.lower():
+                guesses = 1
+                play == 'yes'
